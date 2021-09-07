@@ -4,5 +4,3 @@ export enum FeedType {
   JOB = "job",
   SHOW = "show",
 }
-
-declare type FeedEnumType = keyof typeof FeedType;

@@ -17,7 +17,9 @@ function create(
     link: createHttpLink({
       uri: GRAPHQL_URI,
       credentials: "same-origin",
-      headers: {},
+      headers: {
+        Cookie: `connect.sid=${getToken()["connect.sid"]}`,
+      },
       fetch,
     }),
     cache: new InMemoryCache().restore(initialState || {}),

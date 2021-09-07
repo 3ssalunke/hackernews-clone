@@ -21,7 +21,7 @@ app
   .then(async () => {
     const cache = new HnCache();
     const db = new HnDatabase(HN_API_URL, cache);
-    seedCache(db, cache, 15000);
+    // seedCache(db, cache, 15000);
 
     const itemService = new ItemService(db, cache);
     const feedService = new FeedService(db, cache);
