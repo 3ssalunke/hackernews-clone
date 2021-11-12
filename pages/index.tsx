@@ -18,11 +18,10 @@ const query = gql`
 
 export function IndexPage(props): JSX.Element {
   const { router } = props;
-
   const { data } = useQuery(query, { variables: { type: FeedType.TOP } });
 
   return (
-    <MainLayout>
+    <MainLayout currentUrl={router.pathname}>
       <NewsFeed />
     </MainLayout>
   );

@@ -1,7 +1,13 @@
 import Link from "next/link";
 import { HeaderNav } from "./header-nav";
 
-export function Header(props): JSX.Element {
+interface IHeaderProps {
+  me: { id: string; karma: number } | undefined;
+  currentUrl: string;
+}
+
+export function Header(props: IHeaderProps): JSX.Element {
+  const { me, currentUrl } = props;
   return (
     <tr>
       <td style={{ backgroundColor: "#ff6600", padding: "0px" }}>
@@ -45,13 +51,21 @@ export function Header(props): JSX.Element {
                   paddingRight: "4px",
                 }}
               >
-                <span className="pagetop">
-                  <Link href={`/user?id=${11}`}>
-                    <a>11</a>
-                  </Link>
-                  {` Bunty | `}
-                  <a href="/">logout</a>
-                </span>
+                {me ? (
+                  <span className="pagetop">
+                    <Link href={`/user?id=${me.id}`}>
+                      <a>{me.id}</a>
+                    </Link>
+                    {` ${me.karma} | `}
+                    <a href="/logout">logout</a>
+                  </span>
+                ) : (
+                  <span className="pagetop">
+                    <Link href={`/login?goto=${currentUrl}`}>
+                      <a>login</a>
+                    </Link>
+                  </span>
+                )}
               </td>
             </tr>
           </tbody>

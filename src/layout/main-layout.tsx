@@ -1,13 +1,18 @@
+import { useQuery } from "@apollo/client";
 import Head from "next/head";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
+import { IMeQuery, ME_QUERY } from "../data/queries/me-query";
 
 interface IMainLayoutProps {
   children: React.ReactChild;
+  currentUrl: string;
 }
 
 export function MainLayout(props: IMainLayoutProps): JSX.Element {
-  const { children } = props;
+  const { children, currentUrl } = props;
+  const { data } = useQuery<IMeQuery>(ME_QUERY);
+
   return (
     <div>
       <Head>
@@ -31,7 +36,7 @@ export function MainLayout(props: IMainLayoutProps): JSX.Element {
         }}
       >
         <tbody>
-          <Header />
+          <Header me={data?.me} currentUrl={currentUrl} />
           <tr></tr>
           {children}
           <Footer />

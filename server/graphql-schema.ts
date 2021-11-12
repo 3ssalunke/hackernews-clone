@@ -8,6 +8,23 @@ export const typeDefs = gql`
     show
   }
 
+  scalar Date
+
+  type User {
+    id: String!
+    about: String
+    creationTime: Date!
+    dateOfBirth: Date
+    email: String
+    favorites: [Int]
+    firstName: String
+    hides: [Int]!
+    karma: Int!
+    lastName: String
+    likes: [Int]!
+    posts: [Int]!
+  }
+
   type Item {
     id: Int!
     type: String!
@@ -27,5 +44,7 @@ export const typeDefs = gql`
   type Query {
     item(id: Int!): Item
     feed(feedType: FeedType!): [Item]
+    me: User
+    user(id: String!): User
   }
 `;

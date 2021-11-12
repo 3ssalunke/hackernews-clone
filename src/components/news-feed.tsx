@@ -1,7 +1,7 @@
 export const NewsFeed: React.FC = () => {
   return (
     <tr>
-      <td>Hello</td>
+      <td></td>
     </tr>
   );
 };

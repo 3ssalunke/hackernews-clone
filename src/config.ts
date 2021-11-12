@@ -20,3 +20,5 @@ export const GRAPHQL_PATH = "/graphql";
 export const GRAPHIQL_PATH = "/graphiql";
 export const GRAPHQL_URI = ORIGIN + GRAPHQL_PATH;
 export const useGraphqlPlayground = true;
+
+export const passwordIterations = 10000;
